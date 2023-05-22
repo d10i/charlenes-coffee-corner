@@ -37,4 +37,22 @@ class ProductChoiceTest {
         var choice = new ProductChoice(1, PRODUCT_BEVERAGE, SIZE_STANDARD, Set.of(CHEAP_EXTRA, EXPENSIVE_EXTRA), Optional.empty());
         assertEquals(SIZE_STANDARD.price() + CHEAP_EXTRA.price() + EXPENSIVE_EXTRA.price(), choice.priceWithoutBonus());
     }
+
+    @Test
+    void testMostExpensiveExtraWithNoExtras() {
+        var choice = new ProductChoice(1, PRODUCT_BEVERAGE, SIZE_STANDARD, Collections.emptySet(), Optional.empty());
+        assertEquals(0.0f, choice.mostExpensiveExtra());
+    }
+
+    @Test
+    void testMostExpensiveExtraWithOneExtra() {
+        var choice = new ProductChoice(1, PRODUCT_BEVERAGE, SIZE_STANDARD, Set.of(EXPENSIVE_EXTRA), Optional.empty());
+        assertEquals(EXPENSIVE_EXTRA.price(), choice.mostExpensiveExtra());
+    }
+
+    @Test
+    void testMostExpensiveExtraWithTwoExtras() {
+        var choice = new ProductChoice(1, PRODUCT_BEVERAGE, SIZE_STANDARD, Set.of(CHEAP_EXTRA, EXPENSIVE_EXTRA), Optional.empty());
+        assertEquals(EXPENSIVE_EXTRA.price(), choice.mostExpensiveExtra());
+    }
 }
