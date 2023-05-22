@@ -6,4 +6,24 @@ import java.util.Set;
 /**
  * Represents a product choice.
  */
-public record ProductChoice (int itemNumber, Product product, Size size, Set<Extra> extras, Optional<Bonus> bonus) { }
+public record ProductChoice (int itemNumber, Product product, Size size, Set<Extra> extras, Optional<Bonus> bonus) {
+    /**
+     * Displays the product choice.
+     *
+     * @return the name of the product choice
+     */
+    public ProductChoice withBonus(Bonus bonus) {
+        return new ProductChoice(itemNumber, product, size, extras, Optional.ofNullable(bonus));
+    }
+
+    /**
+     * Calculates the price of the product choice without considering the bonus.
+     *
+     * @return the price of the product choice without the bonus
+     */
+    public float priceWithoutBonus() {
+        return size.price() + extras.stream()
+                .map(Extra::price)
+                .reduce(0.0f, Float::sum);
+    }
+}

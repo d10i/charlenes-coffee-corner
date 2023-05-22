@@ -1,5 +1,6 @@
 package tech.dario.swissre.charlenescoffeecorner;
 
+import tech.dario.swissre.charlenescoffeecorner.model.Bonus;
 import tech.dario.swissre.charlenescoffeecorner.model.Extra;
 import tech.dario.swissre.charlenescoffeecorner.model.Product;
 import tech.dario.swissre.charlenescoffeecorner.model.Size;
@@ -18,4 +19,6 @@ public class TestObjects {
 
     public static final Product PRODUCT_BEVERAGE = new Product("Drink", true, List.of(SIZE_SMALL, SIZE_MEDIUM, SIZE_LARGE), List.of(CHEAP_EXTRA, EXPENSIVE_EXTRA));
     public static final Product PRODUCT_SNACK = new Product("Snack", false, List.of(SIZE_STANDARD), Collections.emptyList());
+
+    public static final Bonus BONUS = new Bonus("Bonus", 0.5f);
 }
