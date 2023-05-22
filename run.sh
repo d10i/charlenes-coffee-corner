@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Build the application
-gradle build
+./gradlew build
 
 echo ""
 
