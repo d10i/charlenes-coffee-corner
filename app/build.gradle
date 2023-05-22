@@ -1,0 +1,29 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+application {
+    mainClass = 'tech.dario.swissre.charlenescoffeecorner.Main'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+run {
+    standardInput = System.in
+}
